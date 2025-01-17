@@ -1,10 +1,10 @@
 """
-Test Custom Django Management Commands
+Test custom Django management commands.
 """
 
 from unittest.mock import patch
 
-from psycopg2 import OperationalError as Psycopg20pError
+from psycopg2 import OperationalError as Psycopg2OpError
 
 from django.core.management import call_command
 from django.db.utils import OperationalError
@@ -25,8 +25,8 @@ class CommandTests(SimpleTestCase):
 
     @patch('time.sleep')
     def test_wait_for_db_delay(self, patched_sleep, patched_check):
-        """Test waiting for database when getting the Operationalerror"""
-        patched_check.side_effect = [Psycopg20pError] * 2 + \
+        """Test waiting for database when getting OperationalError."""
+        patched_check.side_effect = [Psycopg2OpError] * 2 + \
             [OperationalError] * 3 + [True]
 
         call_command('wait_for_db')
