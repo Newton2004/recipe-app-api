@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Update and return user."""
         password = validated_data.pop('password', None)
-        user = super.update(instance, validated_data)
+        user = super().update(instance, validated_data)
 
         if password:
             user.set_password(password)
@@ -38,7 +38,7 @@ class AuthTokenSerializer(serializers.Serializer):
     """Serializer for the user auth token."""
     email = serializers.EmailField()
     password = serializers.CharField(
-        style = {'input_type':'password'},
+        style={'input_type': 'password'},
         trim_whitespace=False,
     )
 
