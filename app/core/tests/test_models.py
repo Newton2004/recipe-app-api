@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 
 from core import models
 
+
 class ModelTests(TestCase):
     """Test models."""
 
@@ -56,12 +57,12 @@ class ModelTests(TestCase):
             'test@example.com',
             'testpasss123',
         )
-        recipe = models.Recipe.objects.create(
-            user = user,
-            title = 'Sample recipe name',
-            time_minutes = 5,
-            price = Decimal('5.50'),
-            description = 'Sample recipe description.',
+        recipe=models.Recipe.objects.create(
+            user=user,
+            title='Sample recipe name',
+            time_minutes=5,
+            price=Decimal('5.50'),
+            description='Sample recipe description.',
         )
 
         self.assertEqual(str(recipe), recipe.title)
