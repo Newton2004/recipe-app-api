@@ -1,8 +1,8 @@
 """
 Database models.
 """
-import uuid
-import os
+# import uuid  noqa
+# import os  noqa
 
 from django.conf import settings
 from django.db import models
